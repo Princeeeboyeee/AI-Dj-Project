@@ -1,11 +1,23 @@
-preload();{
+song="";
+leftWristX=0;
+leftWristY=0;
+rightWristX=0;
+rightWristY=0;
 
+
+function preload(){
+    song=loadSound();
 }
 
-setup();{
-    canvas = createCanvas(500, 400);
+function setup(){
+canvas=createCanvas(800,600);
+canvas.center();
+video=createCapture(VIDEO);
+video.hide();
+poseNet=ml5.poseNet(video, modelLoaded);
+poseNet.on('pose', gotPoses);
 }
 
-draw();{
-
+function draw(){
+    image(video, 0,0, 800, 600);
 }
